@@ -1,5 +1,5 @@
 resource "aws_s3_bucket_notification" "image_uploaded" {
-  bucket = module.s3_bucket_A.bucket.id
+  bucket = module.s3_bucket_A.s3_bucket_arn
 
   lambda_function {
     lambda_function_arn = module.lambda_function_existing_package_s3.lambda_function_arn

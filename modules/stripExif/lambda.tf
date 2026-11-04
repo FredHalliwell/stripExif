@@ -58,6 +58,7 @@ module "stripExif_lambda" {
   s3_bucket   = module.lambda_bucket.s3_bucket_id
 
   layers = [
+    # from https://github.com/keithrozario/Klayers#list-of-arns
     "arn:aws:lambda:eu-west-2:770693421928:layer:Klayers-p312-pillow:2"
   ]
 
@@ -65,7 +66,17 @@ module "stripExif_lambda" {
     OUTPUT_BUCKET = module.s3_bucket_A.s3_bucket_id
   }
 
-#   tags = {
-#     Module = "lambda-with-layer"
-#   }
+  attach_policy_statements = true
+  policy_statements = {
+    s3_read = {
+      effect    = "Allow"
+      actions   = ["s3:GetObject"]
+      resources = ["${module.s3_bucket_A.s3_bucket_arn}/*"]
+    },
+    s3_write = {
+      effect    = "Allow"
+      actions   = ["s3:PutObject"]
+      resources = ["${module.s3_bucket_B.s3_bucket_arn}/*"]
+    }
+  }
 }

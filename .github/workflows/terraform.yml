@@ -35,7 +35,7 @@ jobs:
         terraform_version: "latest"
 
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -input=false -backend-config=bootstrap/backend_config/dev.conf
 
     - name: Terraform Format
       run: terraform fmt -check

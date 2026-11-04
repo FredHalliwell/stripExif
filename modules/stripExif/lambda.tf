@@ -1,10 +1,9 @@
 locals {
-  function_source = "function/stripExif.zip"
+  function_source = "function/lambda_function.zip"
 }
 
 resource "aws_s3_bucket" "builds" {
   bucket = "lambdas"
-  acl    = "private"
 }
 
 resource "aws_s3_object" "stripExif" {

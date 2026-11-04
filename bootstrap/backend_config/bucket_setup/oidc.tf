@@ -7,6 +7,7 @@ module "github-oidc" {
 
   repositories = ["${var.github_login}@${var.github_ID}/${var.repository_name}@${var.repository_ID}"]
     oidc_role_attach_policies = [
-    aws_iam_policy.tfstate_access.arn
+    aws_iam_policy.tfstate_access.arn,
+    aws_iam_policy.pipeline_policy.arn
   ]
 }

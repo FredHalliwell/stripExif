@@ -5,13 +5,14 @@ on:
   pull_request:
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: production
+    # environment: production
 
     defaults:
       run:
@@ -20,6 +21,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+
+    - name: 'Configure AWS credentials'
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+        aws-region: eu-west-2
+        role-session-name: GitHubActionsSession
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1

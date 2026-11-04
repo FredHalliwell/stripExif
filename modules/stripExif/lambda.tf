@@ -27,6 +27,22 @@
 #   }
 # }
 
+module "lambda_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket_namespace = "account-regional"
+
+  bucket = format("${var.environment}-lambda-builds-%s-%s-an", data.aws_caller_identity.current.account_id, data.aws_region.current.region)
+  acl    = "private"
+
+  control_object_ownership = true
+  object_ownership         = "ObjectWriter"
+
+  versioning = {
+    enabled = true
+  }
+}
+
 module "stripExif_lambda" {
   source = "terraform-aws-modules/lambda/aws"
 
@@ -39,7 +55,7 @@ module "stripExif_lambda" {
   source_path = "modules/stripExif/function"
 
   store_on_s3 = true
-  s3_bucket   = "lambda-builds"
+  s3_bucket   = module.lambda_bucket.s3_bucket_id
 
 #   layers = [
 #     module.lambda_layer_s3.lambda_layer_arn,

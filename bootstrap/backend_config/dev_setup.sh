@@ -13,8 +13,9 @@ terraform {
 EOF
 
 printf 'Please update dev.conf with the name of your bucket (printed above), then press Enter to finish setup'
+printf 'Do not migrate the state to S3.'
 read -r _
 
-terraform init -migrate-state -force-copy -backend-config=../dev.conf
+terraform init -reconfigure -backend-config=../dev.conf
 
 printf 'Backend setup complete.'

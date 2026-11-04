@@ -1,0 +1,5 @@
+environment     = "dev"
+github_login    = "FredHalliwell"
+github_ID       = "84017149"
+repository_name = "stripExif"
+repository_ID   = "1445422332"

@@ -16,7 +16,7 @@ variable "github_ID" {
 variable "repository_name" {
   type        = string
   description = "Your repository name. It can be left as stripExif unless you have changed it. All OIDC details can be found at https://api.github.com/repos/<username>/<repository>"
-default = "stripExif"
+  default     = "stripExif"
 }
 
 variable "repository_ID" {

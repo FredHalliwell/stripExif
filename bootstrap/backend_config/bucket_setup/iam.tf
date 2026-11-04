@@ -33,6 +33,21 @@ resource "aws_iam_policy" "pipeline_policy" {
         Effect   = "Allow"
         Action   = ["s3:*"]
         Resource = "*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["iam:CreateRole", "iam:GetRole"]
+        Resource = "*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["logs:*"]
+        Resource = "*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["lambda:*"]
+        Resource = "*"
       }
     ]
   })

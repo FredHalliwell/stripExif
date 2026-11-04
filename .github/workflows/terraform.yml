@@ -10,7 +10,11 @@ permissions:
 
 jobs:
 
+  tfsec:
+    uses: ./.github/workflows/codeQuality.yml
+
   terraform:
+    needs: tfsec
     name: 'Terraform'
     runs-on: ubuntu-latest
     # environment: production

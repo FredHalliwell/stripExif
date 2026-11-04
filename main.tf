@@ -3,7 +3,3 @@ module "stripExif" {
 
   environment = var.environment
 }
-
-module "users" {
-  source = "./modules/users"
-}

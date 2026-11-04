@@ -11,7 +11,7 @@ module "user_A" {
 resource "aws_iam_user_policy" "readWriteBucketA" {
   name   = "read-write-bucket-A"
   user   = module.user_A.iam_user_name
-  policy = aws_iam_policy.pipeline_policy.policy
+  policy = aws_iam_policy.readWriteBucketA.policy
 }
 
 resource "aws_iam_policy" "readWriteBucketA" {

@@ -70,7 +70,7 @@ module "stripExif_lambda" {
   policy_statements = {
     s3_read = {
       effect    = "Allow"
-      actions   = ["s3:GetObject"]
+      actions   = ["s3:GetObject", "s3:ListBucket"]
       resources = ["${module.s3_bucket_A.s3_bucket_arn}/*"]
     },
     s3_write = {

@@ -61,9 +61,9 @@ module "stripExif_lambda" {
 #     module.lambda_layer_s3.lambda_layer_arn,
 #   ]
 
-#   environment_variables = {
-#     Serverless = "Terraform"
-#   }
+  environment_variables = {
+    OUTPUT_BUCKET = module.s3_bucket_A.s3_bucket_id
+  }
 
 #   tags = {
 #     Module = "lambda-with-layer"

@@ -63,7 +63,7 @@ module "stripExif_lambda" {
   ]
 
   environment_variables = {
-    OUTPUT_BUCKET = module.s3_bucket_A.s3_bucket_id
+    OUTPUT_BUCKET = module.s3_bucket_B.s3_bucket_id
   }
 
   attach_policy_statements = true

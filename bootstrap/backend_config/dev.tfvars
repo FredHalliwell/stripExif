@@ -1,4 +1,5 @@
 environment     = "dev"
+region          = "eu-west-2"
 github_login    = "FredHalliwell"
 github_ID       = "84017149"
 repository_name = "stripExif"

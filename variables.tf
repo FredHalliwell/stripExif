@@ -5,5 +5,5 @@ variable "environment" {
 
 variable "region" {
   type        = string
-  description = "The environment in which resources are built"
+  description = "The AWS region in which resources are built"
 }

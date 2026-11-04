@@ -24,6 +24,8 @@ This script first builds the S3 bucket required to hold the statefile using loca
 
 Follow the instructions in the script to complete the backend setup.
 
+Copy the S3 bucket name to dev.conf
+
 ### 4. Run the pipeline
 
 add AWS_ROLE_ARN to your github secrets, with the ARN of your newly created OIDC role as the value.

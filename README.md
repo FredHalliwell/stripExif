@@ -2,3 +2,4 @@
 Stripping exif metadata from images.
 
 # Bootstrapping
+<!--  -->

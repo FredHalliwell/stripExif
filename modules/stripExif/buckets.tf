@@ -1,7 +1,7 @@
 module "s3_bucket_A" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
-  bucket = "bucket_A"
+  bucket = "bucket-A"
   acl    = "private"
 
   control_object_ownership = true
@@ -15,7 +15,7 @@ module "s3_bucket_A" {
 module "s3_bucket_B" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
-  bucket = "bucket_B"
+  bucket = "bucket-B"
   acl    = "private"
 
   control_object_ownership = true

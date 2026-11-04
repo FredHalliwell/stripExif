@@ -10,7 +10,7 @@ git clone https://github.com/FredHalliwell/stripExif.git
 
 ### 2. Update variables
 
-In `bootstrap\backend_config\dev.tfvars`, update the empty variables to allow an OIDC connection from Github to AWS. All OIDC details can be found at https://api.github.com/repos/<username>/<repository>".
+In `bootstrap\backend_config\dev.tfvars`, update the empty variables to allow an OIDC connection from Github to AWS. All OIDC details can be found at https://api.github.com/repos/[username]/[repository]".
 
 For example, this project uses the details from https://api.github.com/repos/fredhalliwell/stripExif
 

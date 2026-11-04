@@ -7,7 +7,7 @@ resource "aws_iam_policy" "tfstate_access" {
       {
         Effect   = "Allow"
         Action   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-        Resource = "arn:aws:s3:::dev-tfstate-${data.aws_caller_identity.current.account_id}-${var.region}-an/*"
+        Resource = "arn:aws:s3:::dev-tfstate-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.region}-an/*"
       },
       {
         Effect   = "Allow"

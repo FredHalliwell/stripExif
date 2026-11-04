@@ -12,6 +12,11 @@ jobs:
 
   tfsec:
     uses: ./.github/workflows/codeQuality.yml
+    permissions:
+    actions: read
+    contents: read
+    security-events: write
+
 
   terraform:
     needs: tfsec

@@ -57,9 +57,9 @@ module "stripExif_lambda" {
   store_on_s3 = true
   s3_bucket   = module.lambda_bucket.s3_bucket_id
 
-#   layers = [
-#     module.lambda_layer_s3.lambda_layer_arn,
-#   ]
+  layers = [
+    "arn:aws:lambda:eu-west-2:770693421928:layer:Klayers-p312-pillow:2"
+  ]
 
   environment_variables = {
     OUTPUT_BUCKET = module.s3_bucket_A.s3_bucket_id

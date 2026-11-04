@@ -1,5 +1,3 @@
-data "aws_region" "current" {}
-
 terraform {
   required_providers {
     aws = {
@@ -10,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = data.aws_region.current.region
+  region = var.region
 }
 
 terraform {

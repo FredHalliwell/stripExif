@@ -5,5 +5,5 @@ module "github-oidc" {
   create_oidc_provider = true
   create_oidc_role     = true
 
-  repositories = ["fredhalliwell@1445422332/stripExif@84017149"]
+  repositories = ["${var.github_login}@${var.github_ID}/${var.repository_name}@${var.repository_ID}"]
 }

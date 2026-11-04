@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "tfstate" {
   bucket_namespace = "account-regional"
 }
 
-output tfstate_bucket_name {
-    value       = aws_s3_bucket.tfstate.bucket
-    depends_on  = [aws_s3_bucket.tfstate]
-  }
+output "tfstate_bucket_name" {
+  value      = aws_s3_bucket.tfstate.bucket
+  depends_on = [aws_s3_bucket.tfstate]
+}

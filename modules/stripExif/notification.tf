@@ -2,7 +2,7 @@ resource "aws_s3_bucket_notification" "image_uploaded" {
   bucket = module.s3_bucket_A.s3_bucket_arn
 
   lambda_function {
-    lambda_function_arn = module.lambda_function_existing_package_s3.lambda_function_arn
+    lambda_function_arn = module.stripExif_lambda.lambda_function_arn
     events              = ["s3:ObjectCreated:*"]
     filter_prefix       = "AWSLogs/"
     filter_suffix       = ".log"
@@ -14,7 +14,7 @@ resource "aws_s3_bucket_notification" "image_uploaded" {
 resource "aws_lambda_permission" "allow_bucket" {
   statement_id  = "AllowExecutionFromS3Bucket"
   action        = "lambda:InvokeFunction"
-  function_name = module.lambda_function_existing_package_s3.lambda_function_arn
+  function_name = module.stripExif_lambda.lambda_function_arn
   principal     = "s3.amazonaws.com"
   source_arn    = module.s3_bucket_A.s3_bucket_arn
 }

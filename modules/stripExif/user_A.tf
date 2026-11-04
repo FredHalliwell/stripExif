@@ -10,7 +10,7 @@ module "user_A" {
 
 resource "aws_iam_user_policy" "readWriteBucketA" {
   name   = "read-write-bucket-A"
-  user   = module.user_A.iam_user_name
+  user   = module.user_A.name
   policy = aws_iam_policy.readWriteBucketA.policy
 }
 

@@ -14,7 +14,7 @@ resource "aws_s3_bucket_notification" "image_uploaded" {
 resource "aws_lambda_permission" "allow_bucket" {
   statement_id  = "AllowExecutionFromS3Bucket"
   action        = "lambda:InvokeFunction"
-  function_name = module.lambda_function_existing_package_s3.func.arn
+  function_name = module.lambda_function_existing_package_s3.lambda_function_arn
   principal     = "s3.amazonaws.com"
-  source_arn    = module.s3_bucket_A.bucket.s3_bucket_arn
+  source_arn    = module.s3_bucket_A.s3_bucket_arn
 }

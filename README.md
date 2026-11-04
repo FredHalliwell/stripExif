@@ -23,3 +23,11 @@ Run `bootstrap\backend_config\dev_setup.sh`
 This script first builds the S3 bucket required to hold the statefile using local state, then switches the backend to S3. It also builds the OIDC identity provider for Github, using the details provided in dev.tfvars
 
 Follow the instructions in the script to complete the backend setup.
+
+Copy the S3 bucket name to dev.conf
+
+### 4. Run the pipeline
+
+add AWS_ROLE_ARN to your github secrets, with the ARN of your newly created OIDC role as the value.
+
+Commit your changes to github and the pipeline will build the infrastructure for both tasks.

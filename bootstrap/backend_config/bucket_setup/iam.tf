@@ -39,7 +39,7 @@ resource "aws_iam_policy" "pipeline_policy" {
         Action   = ["iam:CreateRole", "iam:GetRole"]
         Resource = "*"
       },
-    {
+      {
         Effect   = "Allow"
         Action   = ["logs:CreateLogGroup", "logs:DescribeLogGroups "]
         Resource = "*"

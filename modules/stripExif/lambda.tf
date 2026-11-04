@@ -20,7 +20,7 @@ module "lambda_function_existing_package_s3" {
   handler       = "index.lambda_handler"
   runtime       = "python3.12"
 
-  create_package      = false
+  create_package = false
   s3_existing_package = {
     bucket = aws_s3_bucket.builds.id
     key    = aws_s3_object.stripExif.id

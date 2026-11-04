@@ -3,6 +3,12 @@ name: 'Terraform'
 on:
   push:
   pull_request:
+  workflow_dispatch:
+  inputs:
+    environment:
+      type: choice
+      options: [dev, staging, prod] # These are just examples. There is no <env>.conf file for other environments, so they won't work
+      default: dev
 
 permissions:
   id-token: write

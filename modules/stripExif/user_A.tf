@@ -21,13 +21,13 @@ resource "aws_iam_policy" "readWriteBucketA" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid      = "read-bucket-A"
+        Sid      = "ReadBucketA"
         Effect   = "Allow"
         Action   = ["s3:ListBucket", "s3:GetBucketLocation"]
         Resource = module.s3_bucket_A.s3_bucket_arn
       },
       {
-        Sid      = "write-bucket-A"
+        Sid      = "WriteBucketA"
         Effect   = "Allow"
         Action   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
         Resource = "${module.s3_bucket_A.s3_bucket_arn}/*"

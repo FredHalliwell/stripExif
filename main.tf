@@ -6,6 +6,4 @@ module "stripExif" {
 
 module "users" {
   source = "./modules/users"
-
-  environment = var.environment
 }

@@ -5,6 +5,8 @@ data "aws_region" "current" {}
 module "s3_bucket_A" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
+  bucket_namespace = "account-regional"
+
   bucket = format("${var.environment}-bucket-a-%s-%s-an", data.aws_caller_identity.current.account_id, data.aws_region.current.region)
   acl    = "private"
 
@@ -18,6 +20,8 @@ module "s3_bucket_A" {
 
 module "s3_bucket_B" {
   source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket_namespace = "account-regional"
 
   bucket = format("${var.environment}-bucket-b-%s-%s-an", data.aws_caller_identity.current.account_id, data.aws_region.current.region)
   acl    = "private"

@@ -1,3 +1,7 @@
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+
+
 module "s3_bucket_A" {
   source = "terraform-aws-modules/s3-bucket/aws"
 

@@ -18,7 +18,7 @@ resource "aws_iam_policy" "tfstate_access" {
         Effect   = "Allow"
         Action   = ["kms:ListAliases"]
         Resource = "*"
-      }
+      },
     ]
   })
 }

@@ -36,7 +36,7 @@ module "stripExif_lambda" {
   runtime       = "python3.12"
   publish       = true
 
-  source_path = "modules/stripExif/function/lambda_function"
+  source_path = "modules/stripExif/function"
 
   store_on_s3 = true
   s3_bucket   = "lambda-builds"

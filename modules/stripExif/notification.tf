@@ -4,7 +4,7 @@ resource "aws_s3_bucket_notification" "image_uploaded" {
   lambda_function {
     lambda_function_arn = module.stripExif_lambda.lambda_function_arn
     events              = ["s3:ObjectCreated:*"]
-    filter_suffix       = ".jpg"
+    # filter_suffix       = ".jpg"
   }
 
   depends_on = [aws_lambda_permission.allow_bucket]

@@ -22,7 +22,6 @@ jobs:
     needs: tfsec
     name: 'Terraform'
     runs-on: ubuntu-latest
-    # environment: production
 
     defaults:
       run:
@@ -32,11 +31,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Get region
+      run: echo "REGION=$(awk -F'"' '/^region/ {print $2}' bootstrap/backend_config/${{ inputs.environment || 'dev' }}.conf)" >> "$GITHUB_ENV"
+
     - name: 'Configure AWS credentials'
       uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-        aws-region: eu-west-2
+        aws-region: ${{ env.REGION }}
         role-session-name: GitHubActionsSession
 
     - name: Setup Terraform
@@ -45,13 +47,13 @@ jobs:
         terraform_version: "latest"
 
     - name: Terraform Init
-      run: terraform init -input=false -backend-config=bootstrap/backend_config/dev.conf
+      run: terraform init -input=false -backend-config=bootstrap/backend_config/${{ inputs.environment || 'dev' }}.conf
 
     - name: Terraform Format
       run: terraform fmt -check
 
     - name: Terraform Plan
-      run: terraform plan -input=false -var-file=bootstrap/backend_config/dev.tfvars -out=tfplan
+      run: terraform plan -input=false -var-file=bootstrap/backend_config/${{ inputs.environment || 'dev' }}.tfvars -out=tfplan
 
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false tfplan

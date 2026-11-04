@@ -11,8 +11,13 @@ resource "aws_iam_policy" "tfstate_access" {
       },
       {
         Effect   = "Allow"
-        Action   = ["kms:Decrypt", "kms:Encrypt", "kms:GenerateDataKey"]
+        Action   = ["kms:*"]
         Resource = module.kms.key_arn
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["kms:ListAliases"]
+        Resource = "*"
       }
     ]
   })

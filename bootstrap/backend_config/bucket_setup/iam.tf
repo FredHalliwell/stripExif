@@ -41,7 +41,12 @@ resource "aws_iam_policy" "pipeline_policy" {
       },
       {
         Effect   = "Allow"
-        Action   = ["logs:CreateLogGroup", "logs:DescribeLogGroups "]
+        Action   = ["logs:*"]
+        Resource = "*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["lambda:*"]
         Resource = "*"
       }
     ]

@@ -1,32 +1,3 @@
-# locals {
-#   function_source = "modules/stripExif/function/lambda_function.zip"
-# }
-
-# resource "aws_s3_bucket" "builds" {
-#   bucket = "lambdas"
-# }
-
-# resource "aws_s3_object" "stripExif" {
-#   bucket = aws_s3_bucket.builds.id
-#   key    = "${filemd5(local.function_source)}.zip"
-#   source = local.function_source
-# }
-
-# module "lambda_function_existing_package_s3" {
-#   source = "terraform-aws-modules/lambda/aws"
-
-#   function_name = "stripExif"
-#   description   = "Removes exif data from .jpg images."
-#   handler       = "index.lambda_handler"
-#   runtime       = "python3.12"
-
-#   create_package = false
-#   s3_existing_package = {
-#     bucket = aws_s3_bucket.builds.id
-#     key    = aws_s3_object.stripExif.id
-#   }
-# }
-
 module "lambda_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
@@ -46,7 +17,7 @@ module "lambda_bucket" {
 module "stripExif_lambda" {
   source = "terraform-aws-modules/lambda/aws"
 
-  function_name = "stripExif"
+  function_name = "${var.environment}-stripExif"
   description   = "Removes exif data from .jpg images."
   handler       = "index.lambda_handler"
   runtime       = "python3.12"

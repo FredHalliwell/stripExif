@@ -20,6 +20,6 @@ You can change any other settings in *dev.conf* and *dev.tfvars* if required, su
 
 Run `bootstrap\backend_config\dev_setup.sh`
 
-This script first builds the S3 bucket required to hold the statefile using local state, then switches the backend to S3, then finally migrates the state over to the S3 bucket. It also builds the OIDC identity provider for Github. It uses the details provided in dev.tfvars
+This script first builds the S3 bucket required to hold the statefile using local state, then switches the backend to S3. It also builds the OIDC identity provider for Github, using the details provided in dev.tfvars
 
 Follow the instructions in the script to complete the backend setup.

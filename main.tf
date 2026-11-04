@@ -1,3 +1,3 @@
-resource "aws_s3_bucket" "test-bucket" {
-  bucket = "making-sure-cicd-working"
+module "stripExif" {
+  source = "./modules/stripExif"
 }

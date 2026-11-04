@@ -36,14 +36,14 @@ resource "aws_iam_policy" "pipeline_policy" {
       },
       {
         Effect   = "Allow"
-        Action   = ["iam:CreateRole"]
+        Action   = ["iam:CreateRole", "iam:GetRole"]
         Resource = "*"
       },
     {
         Effect   = "Allow"
-        Action   = ["logs:CreateLogGroup"]
+        Action   = ["logs:CreateLogGroup", "logs:DescribeLogGroups "]
         Resource = "*"
-      },
+      }
     ]
   })
 }
